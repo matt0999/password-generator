@@ -9,21 +9,21 @@ var  finalPassword = []; //the outcome of masterArray will be placed in this arr
 function getPwdLength(){
     let pwdLength = prompt("How many characters long will this password be? (must be between 8 and 128)");
    
-    if( pwdLength == null ){
+    if( pwdLength == null ){ //local scope that will respond to hitting "cancel"
       
       alert("Are you sure you don't want a password?");
       return;
   
     }
       
-    else if (pwdLength < 8 || pwdLength > 128) { 
+    else if (pwdLength < 8 || pwdLength > 128) { //local scope that will respond to a wrong amount of characters
       
-      alert("Please select characters between 8 and 128"); //this will account for possible user errors
+      alert("Please select characters between 8 and 128");
       getPwdLength();
   
     }
     
-      if (pwdLength >= 8 || pwdLength <= 128){
+      if (pwdLength >= 8 || pwdLength <= 128){ //local scope containing a correct amount of characters and all the questions relating to the type of characters that wil be used
   
        let upperCase = confirm("Will this password use upper case letters?");
         
@@ -32,7 +32,10 @@ function getPwdLength(){
        let number = confirm("Will this password have numbers?");
         
        let special = confirm("Will this password use special characters?");
-        
+       
+       //all the concat methods here will add each array that is confirmed into the master array.
+      
+
        if (upperCase) {
        masterArray = masterArray.concat(letters)
       
@@ -50,7 +53,8 @@ function getPwdLength(){
         masterArray = masterArray.concat(specCharacters)
        };
        
-  
+       //for loop takes the master array that was created with the concat methods and randomizes it using the amount of characters selected by the user
+
        for (let index = 0; index < pwdLength; index++) {
         finalPassword.push (masterArray[Math.floor(Math.random() * masterArray.length)]);
         
@@ -64,7 +68,6 @@ function getPwdLength(){
       return  finalPassword;
      }
      
-     //.join()<- array method
 
      // Assignment Code
 var generateBtn = document.querySelector("#generate"); //query slector is connected to the generate id in the html/css
