@@ -1,1 +1,1 @@
-# week-3-password-generator
+# password-generator
